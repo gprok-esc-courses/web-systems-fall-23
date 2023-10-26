@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+    th, td {
+        padding: 4px;
+        border: 1px solid black;
+    }
+    th {
+        background-color: lightgray;
+    }
+    td.price_cell {
+        text-align: right;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Price</th></tr>
+    {% for product in products %}
+        <tr><td>{{ product.id }}</td><td>{{ product.name}}</td><td class="price_cell">{{ product.price }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
