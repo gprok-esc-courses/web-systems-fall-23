@@ -11,15 +11,26 @@ def get_db_connection():
 def create_db():
     if not os.path.exists('eshop.db'):
         con = get_db_connection()
-        cursor = con.cursor()
-        cursor.execute("""
-                       CREATE TABLE products 
-                       (id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                        name TEXT, 
-                        price NUMERIC)
-                       """)
-        con.commit()
         con.close()
+
+def create_tables():
+    con = get_db_connection()
+    cursor = con.cursor()
+    cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS products 
+                    (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                    name TEXT, 
+                    price NUMERIC)
+                    """)
+    cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS users
+                    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                     username TEXT,
+                     password TEXT,
+                     role TEXT)
+                    """)
+    con.commit()
+    con.close()
 
 
 def get_product(pid):

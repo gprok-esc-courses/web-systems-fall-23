@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 # Check if DB exists and if not create it
 database.create_db()
+database.create_tables()
 
 products_list = {
     '1': "Mouse", 
