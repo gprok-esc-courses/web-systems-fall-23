@@ -1,6 +1,7 @@
 import sqlite3
 import os
 from models import User, Post
+from hashlib import md5
 
 
 def get_db_connection():
@@ -64,3 +65,21 @@ def get_blogger(bid):
     blogger = User(row[0], row[1], row[2], row[3])
     return blogger
 
+def get_user(username):
+    con = get_db_connection()
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM users WHERE username=?", (username,))
+    row = cursor.fetchone()
+    if row is not None:
+        user = User(row[0], row[1], row[2], row[3])
+        return user
+    else:
+        return None
+    
+def add_user(username, password):
+    con = get_db_connection()
+    cursor = con.cursor()
+    print(hash(password))
+    cursor.execute("INSERT INTO users(username, password, role) VALUES (?, ?, 'BLOGGER')", 
+                   (username, password))
+    con.commit()

@@ -25,7 +25,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                   </li>
-                  {% if user == None %}
+                  {% if g.user == None %}
                   <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                   </li>
@@ -35,6 +35,9 @@
                   {% else %}
                   <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout">User: {{ g.user.username }}</a>
                   </li>
                   {% endif %}
                 </ul>
