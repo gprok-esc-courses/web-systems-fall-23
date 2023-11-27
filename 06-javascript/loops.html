@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Loops example</h1>
+    Symbol: <input type="text" id="symbol" /><br>
+    Repeat: <input type="number" id="repeat" /><br>
+    <button onclick="draw()">Draw</button>
+    <div>
+        <h2 id="drawing"></h2>
+    </div>
+
+    <script>
+        function draw() {
+            let symbol = document.getElementById('symbol').value 
+            let repeat = document.getElementById('repeat').value
+
+            let s = ''
+            for(let i = 0; i < repeat; i++) {
+                s = s + symbol + " "
+            }
+
+            document.getElementById('drawing').innerHTML = s
+        }
+    </script>
+</body>
+</html>

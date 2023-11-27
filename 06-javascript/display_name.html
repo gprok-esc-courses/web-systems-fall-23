@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hello_msg">Hello Stranger</h1>
+    <input type="text" id="name_field" />
+    <button onclick="submitName()">Submit</button>
+
+    <script>
+        function submitName() {
+            let name = document.getElementById('name_field').value
+            console.log(name)
+            document.getElementById('hello_msg').innerHTML = "Hello " + name
+        }
+    </script>
+</body>
+</html>
